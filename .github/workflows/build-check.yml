@@ -1,0 +1,27 @@
+name: Build Check
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.CLIENT_ENGINEERING_GA_SHARED_PAT }}
+  STORYBOOK_MAP_TOKEN: ${{ secrets.GOOGLE_MAP_API_KEY }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.0.0
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Checking
+        run: yarn package:build

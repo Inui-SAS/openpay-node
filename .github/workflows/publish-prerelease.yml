@@ -1,0 +1,40 @@
+name: Publish Prereleased Package
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [closed]
+
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.CLIENT_ENGINEERING_GA_SHARED_PAT }}
+  STORYBOOK_MAP_TOKEN: ${{ secrets.GOOGLE_MAP_API_KEY }}
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true && (startsWith(github.event.pull_request.title, 'fix') || startsWith(github.event.pull_request.title, 'feat'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+          fetch-depth: 0
+          token: ${{ secrets.CLIENT_ENGINEERING_GA_SHARED_PAT }}
+
+      - name: Git setup
+        run: |
+          git config --global user.name "mgm-ci-bot"
+          git config --global user.email "mgm-ci-bot@users.noreply.github.com"
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.15.0
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Version bump and publish prepreleased package
+        run: |
+          yarn package:prerelease
+          git push --follow-tags origin develop
+          yarn package:publish
