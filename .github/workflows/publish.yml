@@ -5,35 +5,31 @@ on:
     branches: [master]
     types: [closed]
 
-env:
-  NODE_AUTH_TOKEN: ${{ secrets.CLIENT_ENGINEERING_GA_SHARED_PAT }}
-  STORYBOOK_MAP_TOKEN: ${{ secrets.GOOGLE_MAP_API_KEY }}
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true && (startsWith(github.event.pull_request.title, 'fix') || startsWith(github.event.pull_request.title, 'feat'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: master
           fetch-depth: 0
-          token: ${{ secrets.CLIENT_ENGINEERING_GA_SHARED_PAT }}
+          token: ${{ secrets.PUBLISH_PACKAGE_SHARED_PAT }}
 
       - name: Git setup
         run: |
           git config --global user.name "tvenegas10"
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.0.0
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
 
       - name: Version bump and publish
         run: |
-          yarn package:release
+          npm package:release
           git push --follow-tags origin master
-          yarn package:publish
+          npm package:publish

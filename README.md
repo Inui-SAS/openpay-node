@@ -1,5 +1,18 @@
 ![Openpay nodejs](https://www.openpay.mx/img/github/nodejs.jpg)
 
+# Para inui! 
+Como publicar cambios a la libreria:
+```
+npm login --registry=https://npm.pkg.github.com --scope=@Inui-SAS
+````
+```
+npm publish
+```
+
+## Uso:
+```
+yarn add @Inui-SAS/openpay
+```
 ## Installation
 
 `npm install openpay`

@@ -1,7 +1,8 @@
 {
-  "name": "openpay",
+  "name": "@Inui-SAS/openpay",
   "description": "Openpay library",
   "version": "2.0.2",
+  "repository": "https://github.com/Inui-SAS/openpay-node.git",
   "dependencies": {
     "standard-version": "^9.5.0",
     "underscore": "1.13.6",
@@ -13,7 +14,15 @@
   },
   "scripts": {
     "test": "mocha",
-    "package:release": "standard-version"
+    "package:clean": "rm -rf dist",
+    "package:build:esm": "tsc --project tsconfig.build.json",
+    "package:build": "yarn package:clean && yarn package:build:esm && yarn copy-files",
+    "package:release": "standard-version",
+    "package:prerelease": "yarn package:release -- --prerelease beta",
+    "package:publish": "yarn package:build && yarn publish --non-interactive"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@Inui-SAS"
   },
   "engines": {
     "node": ">=0.6.x"
