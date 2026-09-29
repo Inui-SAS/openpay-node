@@ -2,8 +2,19 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 8
+  version: 10
   cacheKey: 10c0
+
+"@Inui-SAS/openpay@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@Inui-SAS/openpay@workspace:."
+  dependencies:
+    mocha: "npm:10.2.0"
+    standard-version: "npm:^9.5.0"
+    underscore: "npm:1.13.6"
+    urllib: "npm:^2.36.1"
+  languageName: unknown
+  linkType: soft
 
 "@babel/code-frame@npm:^7.0.0":
   version: 7.24.7
@@ -242,12 +253,12 @@ __metadata:
   linkType: hard
 
 "brace-expansion@npm:^1.1.7":
-  version: 1.1.11
-  resolution: "brace-expansion@npm:1.1.11"
+  version: 1.1.21
+  resolution: "brace-expansion@npm:1.1.21"
   dependencies:
     balanced-match: "npm:^1.0.0"
     concat-map: "npm:0.0.1"
-  checksum: 10c0/695a56cd058096a7cb71fb09d9d6a7070113c7be516699ed361317aca2ec169f618e28b8af352e02ab4233fb54eb0168460a40dc320bab0034b36ab59aaad668
+  checksum: 10c0/8f0a68a720f9cb28c2ecaea5cdaf15fafd686d6b6e4e722a81c9d4bd2f68c1fd0619731cac05875d842221eaf4d97d564d329a12eb3c4c22137502fb3c65be8b
   languageName: node
   linkType: hard
 
@@ -2123,17 +2134,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openpay@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "openpay@workspace:."
-  dependencies:
-    mocha: "npm:10.2.0"
-    standard-version: "npm:^9.5.0"
-    underscore: "npm:1.13.6"
-    urllib: "npm:^2.36.1"
-  languageName: unknown
-  linkType: soft
-
 "os-name@npm:~1.0.3":
   version: 1.0.3
   resolution: "os-name@npm:1.0.3"
@@ -2540,14 +2540,14 @@ __metadata:
 
 "resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>":
   version: 1.22.8
-  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=9bd1a5"
   dependencies:
     is-core-module: "npm:^2.13.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10c0/0446f024439cd2e50c6c8fa8ba77eaa8370b4180f401a96abf3d1ebc770ac51c1955e12764cde449fde3fff480a61f84388e3505ecdbab778f4bef5f8212c729
+  checksum: 10c0/4bc6de64a713422234e0e773bff296767d77d6e545b98042ff90a796d356f2b131853f4fa1d54e2c415aa6efa6dc2eed5b3f501f63164f834619fda900e33b8e
   languageName: node
   linkType: hard
 
